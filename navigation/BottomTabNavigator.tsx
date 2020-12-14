@@ -5,9 +5,11 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import RosterScreen from '../screens/RosterScreen';
+import MatchupScreen from '../screens/MatchupScreen';
+import StocksScreen from '../screens/StocksScreen';
+import LeagueScreen from '../screens/LeagueScreen';
+import { BottomTabParamList, RosterParamList, MatchupParamList, StocksParamList, LeagueParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -16,18 +18,32 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Roster"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneNavigator}
+        name="Roster"
+        component={RosterNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
+        name="Matchup"
+        component={MatchupNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Stocks"
+        component={StocksNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="League"
+        component={LeagueNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
@@ -44,30 +60,58 @@ function TabBarIcon(props: { name: string; color: string }) {
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+const RosterStack = createStackNavigator<RosterParamList>();
 
-function TabOneNavigator() {
+function RosterNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+    <RosterStack.Navigator>
+      <RosterStack.Screen
+        name="RosterScreen"
+        component={RosterScreen}
+        options={{ headerTitle: 'Roster' }}
       />
-    </TabOneStack.Navigator>
+    </RosterStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const MatchupStack = createStackNavigator<MatchupParamList>();
 
-function TabTwoNavigator() {
+function MatchupNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+    <MatchupStack.Navigator>
+      <MatchupStack.Screen
+        name="MatchupScreen"
+        component={MatchupScreen}
+        options={{ headerTitle: 'Matcup' }}
       />
-    </TabTwoStack.Navigator>
+    </MatchupStack.Navigator>
+  );
+}
+
+const StocksStack = createStackNavigator<StocksParamList>();
+
+function StocksNavigator() {
+  return (
+    <StocksStack.Navigator>
+      <StocksStack.Screen
+        name="StocksScreen"
+        component={StocksScreen}
+        options={{ headerTitle: 'Stocks' }}
+      />
+    </StocksStack.Navigator>
+  );
+}
+
+const LeagueStack = createStackNavigator<LeagueParamList>();
+
+function LeagueNavigator() {
+  return (
+    <LeagueStack.Navigator>
+      <LeagueStack.Screen
+        name="LeagueScreen"
+        component={LeagueScreen}
+        options={{ headerTitle: 'League' }}
+      />
+    </LeagueStack.Navigator>
   );
 }

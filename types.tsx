@@ -4,14 +4,24 @@ export type RootStackParamList = {
 };
 
 export type BottomTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
+  Roster: undefined;
+  Matchup: undefined;
+  Stocks: undefined;
+  League: undefined;
 };
 
-export type TabOneParamList = {
-  TabOneScreen: undefined;
+export type RosterParamList = {
+  RosterScreen: undefined;
 };
 
-export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+export type MatchupParamList = {
+  MatchupScreen: undefined;
+};
+
+export type StocksParamList = {
+  StocksScreen: undefined;
+};
+
+export type LeagueParamList = {
+  LeagueScreen: undefined;
 };
